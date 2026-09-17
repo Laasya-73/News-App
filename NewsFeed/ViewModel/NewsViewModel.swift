@@ -7,6 +7,8 @@
 
 import Foundation
 
+//MARK: - News ViewModel Protocol
+
 protocol NewsViewModelProtocol {
     func fetchNewsFromNetwork(completion: @escaping () -> Void)
     func getArticlesCount() -> Int
@@ -15,7 +17,12 @@ protocol NewsViewModelProtocol {
     func clearSearch()
 }
 
+//MARK: - News ViewModel
+
 class NewsViewModel: NewsViewModelProtocol {
+    
+    //MARK: - Properties
+    
     private var newsData: NewsResponse?
     private let objNetwork: NetworkManagerProtocol
     
@@ -27,6 +34,8 @@ class NewsViewModel: NewsViewModelProtocol {
          }
          return newsData?.articles ?? []
      }
+    
+    //MARK: - Initializer
     
     init(objNetwork: NetworkManagerProtocol) {
         self.objNetwork = objNetwork
